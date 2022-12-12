@@ -10,7 +10,8 @@ local servers = {
 	"taplo",
 	"jsonls",
 	"yamlls",
-  "zk"
+  "zk",
+  "denols"
 }
 local util = require("lspconfig/util")
 local icons = require("text_editor.icons")
