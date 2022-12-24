@@ -105,7 +105,10 @@ keymap("n", "<leader>r-", "<cmd>:RustMoveItemUp<cr>", opts)
 keymap("n", "<leader>r+", "<cmd>:RustMoveItemDown<cr>", opts)
 keymap("n", "<leader>re", "<cmd>:RustRun<cr>", opts)
 
-local crates = require('crates')
+local ok, crates = pcall(require, 'crates')
+if not ok then
+	return
+end
 local c_opts = { noremap = true, silent = true }
 
 keymap('n', '<leader>ct', crates.toggle, c_opts)

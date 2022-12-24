@@ -27,7 +27,10 @@ vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", {default = true, bg = "#000000
 vim.api.nvim_set_hl(0, "NavicText",               {default = true, bg = "#000000", fg = "#ffffff"})
 vim.api.nvim_set_hl(0, "NavicSeparator",          {default = true, bg = "#000000", fg = "#ffffff"})
 
-local navic = require("nvim-navic")
+local ok, navic = pcall(require, "nvim-navic")
+if not ok then
+	return
+end
 navic.setup {
   icons = {
     File = ' ',
