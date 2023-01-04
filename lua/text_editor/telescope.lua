@@ -9,8 +9,9 @@ telescope.load_extension("file_browser")
 telescope.load_extension("dap")
 telescope.load_extension("notify")
 telescope.load_extension("ui-select")
-telescope.load_extension("project")
 telescope.load_extension("flutter")
+telescope.load_extension("aerial")
+telescope.load_extension('projects')
 
 telescope.setup({
 	defaults = {
@@ -27,6 +28,14 @@ telescope.setup({
 				["<Up>"] = actions.cycle_history_prev,
 				["<Down>"] = actions.cycle_history_next,
 			},
+		},
+	},
+	aerial = {
+		-- Display symbols as <root>.<parent>.<symbol>
+		show_nesting = {
+			["_"] = false, -- This key will be the default
+			json = true, -- You can set the option for specific filetypes
+			yaml = true,
 		},
 	},
 })
