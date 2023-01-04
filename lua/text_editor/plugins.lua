@@ -64,12 +64,12 @@ return packer.startup(function(use)
 	use({ "folke/tokyonight.nvim" })
 	use({ "lunarvim/darkplus.nvim" })
 	use({ "nyoom-engineering/oxocarbon.nvim" })
-  use ({ "tomasiser/vim-code-dark" })
+	use({ "tomasiser/vim-code-dark" })
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
 	use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-	use({ "hrsh7th/cmp-path"}) -- path completions
+	use({ "hrsh7th/cmp-path" }) -- path completions
 	use({ "saadparwaiz1/cmp_luasnip" }) -- snippet completions
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lua" })
@@ -83,7 +83,7 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig" }) -- enable LSP
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use({ "jose-elias-alvarez/null-ls.nvim"}) -- for formatters and linters
+	use({ "jose-elias-alvarez/null-ls.nvim" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate" })
 
 	-- Telescope
@@ -102,12 +102,12 @@ return packer.startup(function(use)
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
 
-  -- Extras
-  use "folke/which-key.nvim"
+	-- Extras
+	use("folke/which-key.nvim")
 	use({ "Pocco81/auto-save.nvim" })
 	use({ "anuvyklack/pretty-fold.nvim" })
 	use({ "RRethy/nvim-base16" })
-	use({ "ThePrimeagen/harpoon"})
+	use({ "ThePrimeagen/harpoon" })
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
 	use("nvim-telescope/telescope-project.nvim")
@@ -126,23 +126,23 @@ return packer.startup(function(use)
 	use("ray-x/go.nvim")
 	use("ray-x/guihua.lua")
 	use("vappolinario/cmp-clippy")
- use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-}
-use {
-    'saecki/crates.nvim',
-    tag = 'v0.3.0',
-    requires = { 'nvim-lua/plenary.nvim' },
-}
-use({ "lvimuser/lsp-inlayhints.nvim" })
-  -- experimental plugins  
-use {
-      'stevearc/aerial.nvim',
-      config = function()  end
-    } 
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.3.0",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+	use({ "lvimuser/lsp-inlayhints.nvim" })
+	-- experimental plugins
+	use({
+		"stevearc/aerial.nvim",
+		config = function() end,
+	})
 
-  use "xiyaowong/nvim-transparent"
+	use("xiyaowong/nvim-transparent")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

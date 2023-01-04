@@ -5,6 +5,10 @@ if not status_cmp_ok then
 	return
 end
 
+local ok, navic = pcall(require, "nvim-navic")
+if not ok then
+	return vim.notify("Navic failed")
+end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
@@ -71,6 +75,12 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+	vim.g.navic_silence = true -- can be set to true to suppress error
+	local symbols_supported = client.supports_method("textDocument/documentSymbol")
+	if symbols_supported then
+		navic.attach(client, bufnr)
+	end
+
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
