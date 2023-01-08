@@ -97,4 +97,9 @@ return require("packer").startup(function(use)
 	use("folke/which-key.nvim")
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 	use("mhinz/vim-startify")
+
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 end)
