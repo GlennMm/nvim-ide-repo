@@ -2,19 +2,14 @@ local servers = {
 	"sumneko_lua",
 	"tailwindcss",
 	"html",
-	"volar",
 	"prismals",
 	"rust_analyzer",
 	"gopls",
 	"tsserver",
 	"taplo",
 	"jsonls",
-	"yamlls",
 	"prismals",
-	"graphql",
 	"bashls",
-	"dockerls",
-	"emmet_ls",
 	"zk",
 }
 local util = require("lspconfig/util")
@@ -125,7 +120,7 @@ for _, server in pairs(servers) do
 			lsp_codelens = true,
 			tag_options = "json=omitempty",
 			comment_placeholder = icons.kind.Misc,
-			icons = { breakpoint = icons.ui.Bug, currentpos = icons.documents.OpenFolder },
+			icons = { breakpoint = icons.ui.Bug, currentpos = icons.diagnostics.Hint },
 			dap_debug = true,
 			dap_debug_gui = true,
 		})

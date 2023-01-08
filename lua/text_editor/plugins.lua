@@ -88,6 +88,7 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use({ "nvim-telescope/telescope.nvim" })
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- Treesitter
 	use({
@@ -104,7 +105,7 @@ return packer.startup(function(use)
 
 	-- Extras
 	use("folke/which-key.nvim")
-	use({ "Pocco81/auto-save.nvim" })
+	-- use({ "Pocco81/auto-save.nvim" })
 	use({ "anuvyklack/pretty-fold.nvim" })
 	use({ "RRethy/nvim-base16" })
 	use({ "ThePrimeagen/harpoon" })
@@ -144,9 +145,18 @@ return packer.startup(function(use)
 
 	use("xiyaowong/nvim-transparent")
 
+  use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
+
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
   use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim"
+  'sudormrfbin/cheatsheet.nvim',
+
+  requires = {
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-lua/popup.nvim'},
+    {'nvim-lua/plenary.nvim'},
+  }
 }
 
 	-- Automatically set up your configuration after cloning packer.nvim

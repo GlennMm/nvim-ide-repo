@@ -10,24 +10,23 @@ null_ls.setup({
 	sources = {
     --TODO Code formatting
 		formatting.stylua,
-		formatting.gofmt,
-		formatting.goimports,
-		formatting.prettier,
-		formatting.prismaFmt,
-		formatting.rustfmt,
-		formatting.rustywind,
-		formatting.prismaFmt,
-		formatting.prismaFmt,
+    formatting.eslint,
+		-- formatting.gofmt,
+		-- formatting.goimports,
+		-- formatting.prettier,
+		-- formatting.rustfmt,
+		-- formatting.rustywind,
+		-- formatting.prismaFmt,
 
     -- Code code_actions 
-    code_actions.eslint,
-    code_actions.gomodifytags,
-    code_actions.ltrs,
-
+    -- code_actions.eslint,
+    -- code_actions.gomodifytags,
+    -- code_actions.ltrs,
+    --
     -- diagnostics 
-    diagnostics.eslint,
-    diagnostics.golangci_lint,
-    diagnostics.ltrs,
-    diagnostics.tsc,
+    -- diagnostics.eslint,
+    -- diagnostics.golangci_lint,
+    -- diagnostics.ltrs,
+    -- diagnostics.tsc,
 	},
 })

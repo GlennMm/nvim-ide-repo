@@ -1,5 +1,5 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
-local icons              = require("text_editor.icons")
+local icons = require("text_editor.icons")
 if not cmp_status_ok then
 	return
 end
@@ -44,6 +44,33 @@ local kind_icons = {
 	TypeParameter = "",
 }
 
+local fix = {
+	source_names = {
+		nvim_lsp = "(LSP)",
+		emoji = "(Emoji)",
+		path = "(Path)",
+		calc = "(Calc)",
+		cmp_tabnine = "(Tabnine)",
+		vsnip = "(Snippet)",
+		luasnip = "(Snippet)",
+		buffer = "(Buffer)",
+		tmux = "(TMUX)",
+		copilot = "(Copilot)",
+		treesitter = "(TreeSitter)",
+	},
+	duplicates = {
+		buffer = 1,
+		path = 1,
+		nvim_lsp = 0,
+		luasnip = 1,
+	},
+	duplicates_default = 0,
+	confirm_opts = {
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = false,
+	},
+}
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -52,34 +79,36 @@ cmp.setup({
 	},
 
 	mapping = cmp.mapping.preset.insert({
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-e>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
+		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+		["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+		["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+		["<C-d>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-y>"] = cmp.mapping({
+			i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+			c = function(fallback)
+				if cmp.visible() then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+				else
+					fallback()
+				end
+			end,
 		}),
-		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expandable() then
-				luasnip.expand()
-			elseif luasnip.expand_or_jumpable() then
+			elseif luasnip.expand_or_locally_jumpable() then
 				luasnip.expand_or_jump()
-			elseif check_backspace() then
+			elseif jumpable(1) then
+				luasnip.jump(1)
+			elseif has_words_before() then
+				-- cmp.complete()
 				fallback()
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
+		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -88,34 +117,105 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
+		end, { "i", "s" }),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				local confirm_opts = vim.deepcopy(fix.confirm_opts) -- avoid mutating the original opts below
+				local is_insert_mode = function()
+					return vim.api.nvim_get_mode().mode:sub(1, 1) == "i"
+				end
+				if is_insert_mode() then -- prevent overwriting brackets
+					confirm_opts.behavior = cmp.ConfirmBehavior.Insert
+				end
+				if cmp.confirm(confirm_opts) then
+					return -- success, exit early
+				end
+			end
+			fallback() -- if not exited early, always fallback
+		end),
 	}),
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
+		max_width = 0,
+		kind_icons = icons.kind,
+		source_names = {
+			nvim_lsp = "(LSP)",
+			emoji = "(Emoji)",
+			path = "(Path)",
+			calc = "(Calc)",
+			cmp_tabnine = "(Tabnine)",
+			vsnip = "(Snippet)",
+			luasnip = "(Snippet)",
+			buffer = "(Buffer)",
+			tmux = "(TMUX)",
+			copilot = "(Copilot)",
+			treesitter = "(TreeSitter)",
+		},
+		duplicates = {
+			buffer = 1,
+			path = 1,
+			nvim_lsp = 0,
+			luasnip = 1,
+		},
+		duplicates_default = 0,
 		format = function(entry, vim_item)
-			vim_item.kind = kind_icons[vim_item.kind]
-			vim_item.menu = ({
-				nvim_lsp = icons.cmp.Lsp,
-				nvim_lua = icons.cmp.Lua,
-        crates = "<_>",
-				luasnip = icons.cmp.LSnip,
-				buffer = icons.cmp.Buffer,
-				path = icons.cmp.Path,
-				emoji = icons.cmp.Emoji,
-			})[entry.source.name]
+			local max_width = 0
+			if max_width ~= 0 and #vim_item.abbr > max_width then
+				vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
+			end
+			if true then
+				vim_item.kind = icons.kind[vim_item.kind]
+
+				if entry.source.name == "copilot" then
+					vim_item.kind = icons.git.Octoface
+					vim_item.kind_hl_group = "CmpItemKindCopilot"
+				end
+
+				if entry.source.name == "cmp_tabnine" then
+					vim_item.kind = icons.misc.Robot
+					vim_item.kind_hl_group = "CmpItemKindTabnine"
+				end
+
+				if entry.source.name == "crates" then
+					vim_item.kind = icons.misc.Package
+					vim_item.kind_hl_group = "CmpItemKindCrate"
+				end
+
+				if entry.source.name == "lab.quick_data" then
+					vim_item.kind = icons.misc.CircuitBoard
+					vim_item.kind_hl_group = "CmpItemKindConstant"
+				end
+
+				if entry.source.name == "emoji" then
+					vim_item.kind = icons.misc.Smiley
+					vim_item.kind_hl_group = "CmpItemKindEmoji"
+				end
+			end
+			vim_item.menu = fix.source_names[entry.source.name]
+			vim_item.dup = fix.duplicates[entry.source.name] or fix.duplicates_default
 			return vim_item
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
+		{
+			name = "nvim_lsp",
+			entry_filter = function(entry, ctx)
+				local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+				if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+					return false
+				end
+				if kind == "Text" then
+					return false
+				end
+				return true
+			end,
+		},
 		{ name = "path" },
-    { name = "crates" },
+		{ name = "nvim_lua" },
+		{ name = "buffer" },
+		{ name = "crates" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -127,5 +227,6 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = false,
+		naive_menu = false,
 	},
 })

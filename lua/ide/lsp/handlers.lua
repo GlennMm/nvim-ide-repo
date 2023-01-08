@@ -75,7 +75,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	vim.g.navic_silence = true -- can be set to true to suppress error
+	vim.g.navic_silence = false -- can be set to true to suppress error
 	local symbols_supported = client.supports_method("textDocument/documentSymbol")
 	if symbols_supported then
 		navic.attach(client, bufnr)

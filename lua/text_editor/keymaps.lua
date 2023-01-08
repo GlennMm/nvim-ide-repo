@@ -131,7 +131,7 @@ keymap('n', '<leader>cD', crates.open_documentation, c_opts)
 keymap('n', '<leader>cC', crates.open_crates_io, c_opts)
 
 
-vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', opts)
-vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', opts)
+keymap('n', '{', '<cmd>AerialPrev<CR>', opts)
+keymap('n', '}', '<cmd>AerialNext<CR>', opts)
 
-vim.keymap.set('n', '<leader>o', '<cmd>AerialToggle!<CR>')
+keymap('n', '<leader>o', '<cmd>AerialToggle!<CR>', opts)

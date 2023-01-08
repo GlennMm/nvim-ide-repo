@@ -1,66 +1,46 @@
-vim.api.nvim_set_hl(0, "NavicIconsFile",          {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsModule",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsNamespace",     {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsPackage",       {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsClass",         {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsMethod",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsProperty",      {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsField",         {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsConstructor",   {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsEnum",          {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsInterface",     {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsFunction",      {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsVariable",      {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsConstant",      {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsString",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsNumber",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsBoolean",       {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsArray",         {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsObject",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsKey",           {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsNull",          {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsEnumMember",    {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsStruct",        {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsEvent",         {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsOperator",      {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicText",               {default = true, bg = "#000000", fg = "#ffffff"})
-vim.api.nvim_set_hl(0, "NavicSeparator",          {default = true, bg = "#000000", fg = "#ffffff"})
-
 local ok, navic = pcall(require, "nvim-navic")
 if not ok then
 	return
 end
-navic.setup {
-  -- icons = {
-  --   File = ' ',
-  --   Module = ' ',
-  --   Namespace = ' ',
-  --   Package = ' ',
-  --   Class = ' ',
-  --   Method = ' ',
-  --   Property = ' ',
-  --   Field = ' ',
-  --   Constructor = ' ',
-  --   Enum = ' ',
-  --   Interface = ' ',
-  --   Function = ' ',
-  --   Variable = ' ',
-  --   Constant = ' ',
-  --   String = ' ',
-  --   Number = ' ',
-  --   Boolean = ' ',
-  --   Array = ' ',
-  --   Object = ' ',
-  --   Key = ' ',
-  --   Null = ' ',
-  --   EnumMember = ' ',
-  --   Struct = ' ',
-  --   Event = ' ',
-  --   Operator = ' ',
-  --   TypeParameter = ' '
-  -- }
-}
 
+local icons = require("text_editor.icons").kind
+local icons_ui = require("text_editor.icons").ui
 
-
+navic.setup({
+	icons = {
+		Array = icons.Array .. " ",
+		Boolean = icons.Boolean,
+		Class = icons.Class .. " ",
+		Color = icons.Color .. " ",
+		Constant = icons.Constant .. " ",
+		Constructor = icons.Constructor .. " ",
+		Enum = icons.Enum .. " ",
+		EnumMember = icons.EnumMember .. " ",
+		Event = icons.Event .. " ",
+		Field = icons.Field .. " ",
+		File = icons.File .. " ",
+		Folder = icons.Folder .. " ",
+		Function = icons.Function .. " ",
+		Interface = icons.Interface .. " ",
+		Key = icons.Key .. " ",
+		Keyword = icons.Keyword .. " ",
+		Method = icons.Method .. " ",
+		Module = icons.Module .. " ",
+		Namespace = icons.Namespace .. " ",
+		Null = icons.Null .. " ",
+		Number = icons.Number .. " ",
+		Object = icons.Object .. " ",
+		Operator = icons.Operator .. " ",
+		Package = icons.Package .. " ",
+		Property = icons.Property .. " ",
+		Reference = icons.Reference .. " ",
+		Snippet = icons.Snippet .. " ",
+		String = icons.String .. " ",
+		Struct = icons.Struct .. " ",
+		Text = icons.Text .. " ",
+		TypeParameter = icons.TypeParameter .. " ",
+		Unit = icons.Unit .. " ",
+		Value = icons.Value .. " ",
+		Variable = icons.Variable .. " ",
+	},
+})
