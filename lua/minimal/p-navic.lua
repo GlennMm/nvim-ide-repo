@@ -1,6 +1,7 @@
 local oky, navic = pcall(require, "nvim-navic")
 if not oky then
 	vim.notify("Failed to load navic", vim.log.levels.WARN)
+	return
 end
 
 navic.setup({

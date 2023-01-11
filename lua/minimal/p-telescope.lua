@@ -1,20 +1,21 @@
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
-local actions = require('telescope.actions')
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 
-require('nvim-web-devicons').setup({
+require("nvim-web-devicons").setup({
   override = {},
-  dafeult = false
+  dafeult = false,
 })
-require('telescope').setup {
+require("telescope").setup({
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,i
-    path_display = { 'smart' },
+    path_display = { "smart" },
     mappings = {
       i = {
         -- map actions.which_key to <C-h> (default: <C-/>)
@@ -28,15 +29,18 @@ require('telescope').setup {
         ["<Up>"] = actions.move_selection_previous,
         ["<C-p>"] = actions.cycle_history_prev,
         ["<C-n>"] = actions.cycle_history_next,
-
-      }
-    }
+        ["<C-t>"] = trouble.open_with_trouble,
+      },
+      n = {
+        ["<c-t>"] = trouble.open_with_trouble,
+      },
+    },
   },
   layout_config = {
     horizontal = {
       preview_cutoff = 100,
-      preview_width = 0.6
-    }
+      preview_width = 0.6,
+    },
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
@@ -53,5 +57,5 @@ require('telescope').setup {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  }
-}
+  },
+})

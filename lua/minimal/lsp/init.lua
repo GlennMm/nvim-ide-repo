@@ -44,19 +44,18 @@ for _, server in pairs(servers) do
   end
 
   if server == "gopls" then
-    print('going...')
     -- require("minimal.lsp.tools.go").setup()
   end
 
   if server == "tsserver" then
-    print('ts-server...')
-    -- require("minimal.lsp.tools.ts").setup()
+    --  require("minimal.lsp.tools.ts").setup()
+    --  goto cont
   end
 
   if server == "rust_analyzer" then
-    print('rust-analyzing...')
-    -- require("minimal.lsp.tools.rust").setup()
+    --    require("minimal.lsp.tools.rust").setup()
   end
 
   lspconfig[server].setup(opts)
+  ::cont::
 end

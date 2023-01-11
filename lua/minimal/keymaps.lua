@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 local keymap = vim.keymap
-local opt = { silent = true }
+local opt = { silent = true, noremap = true }
 
 keymap.set("n", "<A-r>", "<cmd>lua ReloadConfig()<cr>", opt)
 
@@ -16,7 +16,15 @@ keymap.set("n", "H", "^", opt)
 keymap.set("n", "L", "$", opt)
 
 -- nvim tree keymaps
-keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', opt)
+keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opt)
 
 -- toggle alternative
-keymap.set('n', '<leader>ta', '<cmd>ToggleAlternate<cr>', opt)
+keymap.set("n", "<leader>ta", "<cmd>ToggleAlternate<cr>", opt)
+
+-- trouble keymaps
+keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opt)
+keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opt)
+keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opt)
+keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opt)
+keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opt)
+keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opt)

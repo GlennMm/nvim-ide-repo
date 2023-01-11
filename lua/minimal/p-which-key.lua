@@ -201,10 +201,22 @@ local mappings = {
     ["6"] = { ":6ToggleTerm<cr>", "6 Terminal" },
     ["7"] = { ":7ToggleTerm<cr>", "7 Terminal" },
     ["8"] = { ":8ToggleTerm<cr>", "8 Terminal" },
-    n = { "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'node', hidden = true }):toggle()<cr>", "Node" },
-    t = { "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'btop', hidden = true }):toggle()<cr>", "Btop" },
-    p = { "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'python', hidden = true }):toggle()<cr>", "Python" },
-    g = { "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<cr>", "Lazygit" },
+    n = {
+      "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'node', hidden = true }):toggle()<cr>",
+      "Node",
+    },
+    t = {
+      "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'btop', hidden = true }):toggle()<cr>",
+      "Btop",
+    },
+    p = {
+      "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'python', hidden = true }):toggle()<cr>",
+      "Python",
+    },
+    g = {
+      "<cmd>lua require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', hidden = true }):toggle()<cr>",
+      "Lazygit",
+    },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
@@ -214,6 +226,14 @@ local mappings = {
     h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
     p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
     r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
+  },
+  x = {
+    name = "Trouble",
+    x = { "<cmd>TroubleToggle<cr>", "Toggle" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspaces" },
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
+    l = { "<cmd>TroubleToggle loclist<cr>", "Loc List" },
+    q = { "<cmd>TroubleToggle lsp_references<cr>", "Lsp References" },
   },
 }
 local vopts = {
