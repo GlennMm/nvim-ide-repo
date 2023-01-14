@@ -45,8 +45,8 @@ local kind_icons = {
 local fix = {
   source_names = {
     nvim_lsp = "(LSP)",
-    path = "(Path)",
     luasnip = "(Snippet)",
+    path = "(Path)",
     buffer = "(Buffer)",
     treesitter = "(TreeSitter)",
   },
@@ -191,10 +191,10 @@ cmp.setup({
           return false
         end
         return true
-      end
+      end,
     },
-    { name = "path" },
     { name = "nvim_lua" },
+    { name = "path" },
     { name = "buffer" },
     { name = "crates" },
   },

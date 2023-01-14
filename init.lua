@@ -1,3 +1,2 @@
 require("reload")
-
 require("minimal")

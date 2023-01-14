@@ -1,5 +1,5 @@
 local ok, notify = pcall(require, "notify")
-if not oky then
+if not ok then
   goto cont
 end
 
