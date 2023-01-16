@@ -4,11 +4,7 @@ if not ok then
   return
 end
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 local types = require("luasnip.util.types")
-local util = require("luasnip.util.util")
-local node_util = require("luasnip.nodes.util")
 
 ls.setup({
   history = true,
@@ -27,3 +23,5 @@ ls.setup({
     },
   },
 })
+
+ls.snippets = {}

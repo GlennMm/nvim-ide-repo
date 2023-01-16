@@ -90,17 +90,22 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      elseif jumpable(1) then
+      elseif luasnip.jumpable(1) then
         luasnip.jump(1)
-      elseif has_words_before() then
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif check_backspace() then
         -- cmp.complete()
         fallback()
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {
+      "i",
+      "s",
+    }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -109,7 +114,10 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end, {
+      "i",
+      "s",
+    }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping(function(fallback)

@@ -42,20 +42,7 @@ for _, server in pairs(servers) do
   if require_ok then
     opts = vim.tbl_deep_extend("force", conf_opts, opts)
   end
-
-  if server == "gopls" then
-    -- require("minimal.lsp.tools.go").setup()
-  end
-
-  if server == "tsserver" then
-    --  require("minimal.lsp.tools.ts").setup()
-    --  goto cont
-  end
-
-  if server == "rust_analyzer" then
-    --    require("minimal.lsp.tools.rust").setup()
-  end
-
+ 
   lspconfig[server].setup(opts)
   ::cont::
 end

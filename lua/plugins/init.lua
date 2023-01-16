@@ -15,7 +15,6 @@ return {
   "mg979/vim-visual-multi",
   "gcmt/wildfire.vim",
   "tpope/vim-surround",
-  "nvim-lualine/lualine.nvim",
   "nvim-telescope/telescope.nvim",
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
