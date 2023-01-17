@@ -187,7 +187,7 @@ local config = {
       mode,
     },
     lualine_b = { { "filename", path = 0 }, "branch" },
-    lualine_c = { "lsp_progress" },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = { lanuage_server, "diagnostics", "filetype" },
     lualine_z = {

@@ -42,7 +42,13 @@ for _, server in pairs(servers) do
   if require_ok then
     opts = vim.tbl_deep_extend("force", conf_opts, opts)
   end
- 
+
   lspconfig[server].setup(opts)
   ::cont::
 end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  update_in_insert = true, -- This sets the spacing and the prefix, obviously.
+  virtual_text = false,
+})
