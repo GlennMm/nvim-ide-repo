@@ -188,8 +188,8 @@ local config = {
     },
     lualine_b = { { "filename", path = 0 }, "branch" },
     lualine_c = {},
-    lualine_x = {},
-    lualine_y = { lanuage_server, "diagnostics", "filetype" },
+    lualine_x = { lanuage_server },
+    lualine_y = { "diagnostics", "filetype" },
     lualine_z = {
       { "progress", separator = { right = "" } },
     },

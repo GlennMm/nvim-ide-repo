@@ -5,7 +5,6 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
 
 require("nvim-web-devicons").setup({
   override = {},
@@ -29,10 +28,6 @@ require("telescope").setup({
         ["<Up>"] = actions.move_selection_previous,
         ["<C-p>"] = actions.cycle_history_prev,
         ["<C-n>"] = actions.cycle_history_next,
-        ["<C-t>"] = trouble.open_with_trouble,
-      },
-      n = {
-        ["<c-t>"] = trouble.open_with_trouble,
       },
     },
   },

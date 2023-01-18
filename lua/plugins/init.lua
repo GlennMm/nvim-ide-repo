@@ -47,7 +47,6 @@ return {
   "tjdevries/colorbuddy.vim",
   "akinsho/toggleterm.nvim",
   "folke/which-key.nvim",
-  "folke/trouble.nvim",
   { "kevinhwang91/nvim-ufo", dependencies = { "kevinhwang91/promise-async" } },
 
   {

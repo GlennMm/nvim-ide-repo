@@ -38,9 +38,24 @@ for _, server in pairs(servers) do
 
   server = vim.split(server, "@")[1]
 
-  local require_ok, conf_opts = pcall(require, "minimal.lsp.settings." .. server)
-  if require_ok then
-    opts = vim.tbl_deep_extend("force", conf_opts, opts)
+  -- local require_ok, conf_opts = pcall(require, "minimal.lsp.settings." .. server)
+  -- if require_ok then
+  --   opts = vim.tbl_deep_extend("force", conf_opts, opts)
+  -- end
+
+  if server == "rust_analyzer" then
+    require("minimal.lsp.tools.rust").setup()
+    goto cont
+  end
+
+  if server == "gopls" then
+    require("minimal.lsp.tools.go").setup()
+    goto cont
+  end
+
+  if server == "tsserver" then
+    require("minimal.lsp.tools.ts").setup()
+    goto cont
   end
 
   lspconfig[server].setup(opts)
