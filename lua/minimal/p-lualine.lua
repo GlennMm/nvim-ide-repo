@@ -211,7 +211,7 @@ local config = {
   },
   tabline = {},
   winbar = {
-    lualine_c = { winbar.get_winbar },
+    -- lualine_c = { winbar.get_winbar },
   },
   inactive_winbar = {},
   extensions = {},

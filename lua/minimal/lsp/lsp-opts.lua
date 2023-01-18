@@ -14,23 +14,23 @@ end
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
+-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+--
 M.on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", bufopts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set("n", "<leader>D", "<cmd>Telescope lsp_type_definitions<cr>", bufopts)
-  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-  vim.keymap.set("n", "<leader>d", "<cmd>Telescope lsp_document_symbols<cr>", bufopts)
-  
-      -- Code action groups
+  -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+  -- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts)
+  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+  -- vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", bufopts)
+  -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  -- vim.keymap.set("n", "<leader>D", "<cmd>Telescope lsp_type_definitions<cr>", bufopts)
+  -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+  -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+  -- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set("n", "<leader>d", "<cmd>Telescope lsp_document_symbols<cr>", bufopts)
+  --
+  -- Code action groups
 
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = vim.api.nvim_create_augroup("LspFormatting", { clear = true }),

@@ -148,10 +148,17 @@ local mappings = {
   },
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+    c = {
+      name = "Calls",
+      i = { "<cmd>Lspsaga incoming_calls<cr>", "Incoming Calls" },
+      o = { "<cmd>Lspsaga outgoing_calls<cr>", "Outgoing Calls" },
+    },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
-      "Document Diagnostics",
+      name = "Diagnostics",
+      c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "Cursor Diagnostics" },
+      l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" },
+      b = { "<cmd>Lspsaga show_buf_diagnostics<cr>", "Buffer Diagnostics" },
     },
     w = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
@@ -161,24 +168,25 @@ local mappings = {
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+      "<cmd>Lspsaga diagnostic_jump_prev<CR>",
       "Next Diagnostic",
     },
     k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+      "<cmd>Lspsaga diagnostic_jump_prev<cr>",
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    r = { "<cmd>Lspsaga rename<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    t = { "<cmd>Lspsaga outline<cr>", "Outline" },
   },
 
-  s = {
+  S = {
     name = "Search",
     t = { "<cmd><leader>fh<cr>", "Help Tags" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
