@@ -7,8 +7,6 @@ return {
 	"mg979/vim-visual-multi",
 	"gcmt/wildfire.vim",
 	"tpope/vim-surround",
-	"nvim-telescope/telescope.nvim",
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
@@ -47,5 +45,4 @@ return {
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
 	"theHamsta/nvim-dap-virtual-text",
-	"nvim-telescope/telescope-dap.nvim",
 }

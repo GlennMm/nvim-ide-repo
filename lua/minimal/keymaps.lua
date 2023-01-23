@@ -14,3 +14,5 @@ keymap.set("n", "<leader>s", "<cmd>:vsplit<Return><C-w>w", opt)
 keymap.set("n", "<A-f>", "<C-w>w", opt)
 keymap.set("n", "H", "^", opt)
 keymap.set("n", "L", "$", opt)
+
+keymap.set("n", "<leader>fb", ":Telescope file_browser", opt)
