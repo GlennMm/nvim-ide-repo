@@ -21,6 +21,8 @@ local servers = {
   "prismals",
   "bashls",
   "zk",
+  "pyright",
+  "jedi_language_server",
 }
 
 require("mason-lspconfig").setup({
@@ -38,10 +40,10 @@ for _, server in pairs(servers) do
 
   server = vim.split(server, "@")[1]
 
-  -- local require_ok, conf_opts = pcall(require, "minimal.lsp.settings." .. server)
-  -- if require_ok then
-  --   opts = vim.tbl_deep_extend("force", conf_opts, opts)
-  -- end
+  local require_ok, conf_opts = pcall(require, "minimal.lsp.settings." .. server)
+  if require_ok then
+    opts = vim.tbl_deep_extend("force", conf_opts, opts)
+  end
 
   if server == "rust_analyzer" then
     require("minimal.lsp.tools.rust").setup()
@@ -49,8 +51,8 @@ for _, server in pairs(servers) do
   end
 
   if server == "gopls" then
-    require("minimal.lsp.tools.go").setup()
-    goto cont
+    --[[ require("minimal.lsp.tools.go").setup()
+    goto cont --]]
   end
 
   if server == "tsserver" then

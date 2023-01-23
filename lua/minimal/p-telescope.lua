@@ -1,3 +1,4 @@
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", builtin.find_files, {})
 vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
@@ -6,11 +7,13 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 local actions = require("telescope.actions")
 
+telescope.load_extension("noice")
+
 require("nvim-web-devicons").setup({
   override = {},
   dafeult = false,
 })
-require("telescope").setup({
+telescope.setup({
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,i

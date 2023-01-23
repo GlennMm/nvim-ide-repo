@@ -33,7 +33,7 @@ opt.undofile = true
 opt.linebreak = true
 opt.cmdheight = 1
 opt.updatetime = 100
-opt.shortmess:append("c")
+opt.shortmess:append("a")
 opt.backup = false
 opt.completeopt = { "menuone", "noselect" }
 opt.conceallevel = 0
@@ -60,25 +60,25 @@ opt.guifont = "monospace:h17"
 opt.title = true
 opt.fillchars = opt.fillchars + "eob: "
 opt.fillchars:append({
-  stl = " ",
+	stl = " ",
 })
 
 vim.scriptencoding = "utf-8"
 bo.autoread = true
 
 api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    highlight.on_yank({
-      higroup = "IncSearch",
-      timeout = 300,
-    })
-  end,
+	callback = function()
+		highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 300,
+		})
+	end,
 })
 
 cmd("set whichwrap+=<,>,[,],h,l")
 cmd([[set iskeyword+=-]])
 filetype.add({
-  extension = {
-    conf = "dosini",
-  },
+	extension = {
+		conf = "dosini",
+	},
 })

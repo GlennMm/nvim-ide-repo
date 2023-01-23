@@ -1,6 +1,12 @@
+-- return {
+--   "nvim-lualine/lualine.nvim",
+--   dependencies = {
+--     "arkav/lualine-lsp-progress"
+--   },
+-- }
 return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "arkav/lualine-lsp-progress"
-  },
+	"feline-nvim/feline.nvim",
+	config = function()
+		-- require("feline").setup()
+	end,
 }

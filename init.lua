@@ -1,2 +1,2 @@
-require("reload")
 require("minimal")
+require("reload")
