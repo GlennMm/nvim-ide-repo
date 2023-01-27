@@ -7,7 +7,7 @@ end
 local ok, tsc = pcall(require, 'ts_context_commentstring.integrations.comment_nvim')
 if not ok then
   cmt.setup()
-  return 
+  return
 end
 
 cmt.setup({

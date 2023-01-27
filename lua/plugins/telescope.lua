@@ -10,6 +10,7 @@ return {
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
       local actions = require("telescope.actions")
+      local fb_actions = require("telescope").extensions.file_browser.actions
 
       telescope.load_extension("noice")
       telescope.load_extension("file_browser")
@@ -66,10 +67,15 @@ return {
             hijack_netrw = true,
             mappings = {
               ["i"] = {
-                -- your custom insert mode mappings
+                -- remap to going to home directory
+                ["<C-h>"] = fb_actions.goto_home_dir,
+                ["<C-x>"] = function(prompt_bufnr)
+                  -- your custom function
+                end,
               },
               ["n"] = {
-                -- your custom normal mode mappings
+                -- unmap toggling `fb_actions.toggle_browser`
+                f = false,
               },
             },
           },

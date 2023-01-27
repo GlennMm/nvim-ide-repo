@@ -1,5 +1,5 @@
-vim.g.use_nerd_icons = false
-if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
+vim.g.use_nerd_icons = true
+if vim.fn.has("unix") == 1 or vim.g.use_nerd_icons then
   -- elseif vim.fn.has "mac" == 1 then
   return {
     kind = {
@@ -87,8 +87,8 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
       Note = "",
       BookMark = "",
       Pencil = "",
-      -- ChevronRight = "",
-      ChevronRight = ">",
+      ChevronRight = "",
+      -- ChevronRight = ">",
       Table = "",
       Calendar = "",
       CloudDownload = "",
@@ -111,7 +111,7 @@ if vim.fn.has("mac") == 1 or vim.g.use_nerd_icons then
     },
   }
 else
-  --   פּ ﯟ   蘒練 some other good icons
+  --      פּ ﯟ    蘒 練      some other good icons
   return {
     kind = {
       Text = " ",
