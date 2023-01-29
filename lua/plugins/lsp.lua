@@ -1,0 +1,27 @@
+return {
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+  },
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/nvim-cmp",
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+  "rafamadriz/friendly-snippets",
+  "jose-elias-alvarez/null-ls.nvim",
+  "SmiteshP/nvim-navic",
+  "mfussenegger/nvim-dap",
+  "rcarriga/nvim-dap-ui",
+  "theHamsta/nvim-dap-virtual-text",
+  "Pocco81/dap-buddy.nvim",
+  "folke/neodev.nvim",
+  {
+    "Exafunction/codeium.vim",
+  },
+}

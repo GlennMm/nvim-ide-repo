@@ -1,4 +1,4 @@
-require("minimal")
+require("new")
 
 P = function(v)
   print(vim.inspect(v))

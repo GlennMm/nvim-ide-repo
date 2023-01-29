@@ -1,0 +1,27 @@
+local map = vim.keymap
+local opt = { silent = true, noremap = true }
+
+map.set("n", "<C-Esc>", "<cmd>wqa<cr>", opt)
+map.set("n", "<C-A-Esc>", "<cmd>qa!<cr>", opt)
+map.set("n", "<C-s>", "<cmd>wa<cr>", opt)
+map.set("n", "<C-a>", "gg<S-v>G", opt)
+map.set("n", "<C-z>", "u", opt)
+map.set("n", "<C-S-z>", "<C-r>", opt)
+map.set("n", "<leader>s", "<cmd>:vsplit<Return><C-w>w", opt)
+map.set("n", "<A-f>", "<C-w>w", opt)
+map.set("n", "H", "^", opt)
+map.set("n", "L", "$", opt)
+map.set("n", "<leader>h", ":nohlsearch<cr>", opt)
+map.set("n", "<leader>e", ":NvimTreeToggle<cr>", opt)
+map.set("i", "<Tab>", function()
+  return vim.fn["codeium#Accept"]()
+end, { expr = true })
+
+map.set("n", "<leader>lf", ":lua vim.lsp.buf.format({ sync = true })<cr>", opt)
+map.set("n", "<leader>t1", ":1ToggleTerm<cr>", opt)
+map.set("n", "<leader>t2", ":2ToggleTerm<cr>", opt)
+map.set("n", "<leader>t3", ":3ToggleTerm<cr>", opt)
+map.set("n", "<leader>t4", ":4ToggleTerm<cr>", opt)
+map.set("n", "<leader>t5", ":5ToggleTerm<cr>", opt)
+map.set("n", "<leader>t6", ":6ToggleTerm<cr>", opt)
+map.set("n", "<leader>t7", ":7ToggleTerm<cr>", opt)
