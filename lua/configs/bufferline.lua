@@ -5,7 +5,6 @@ if not status then
 end
 
 bufferline.setup({
-
   options = {
     mode = "buffers",
     numbers = "none",

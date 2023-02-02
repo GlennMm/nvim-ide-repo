@@ -32,11 +32,15 @@ CURRENT_DIR="$(pwd)"
 NEOVIM_DIR="$HOME/.config/nvim/neovim"
 
 #checks if neovim directory already exists
-[ ! -d "$NEOVIM_DIR" ] || rm -rf "$NEOVIM_DIR"
-
+# [ ! -d "$NEOVIM_DIR" ] || rm -rf "$NEOVIM_DIR"
+# rm -rf "$NEOVIM_DIR"
+if [ ! -d "$NEOVIM_DIR" ]; 
+	git clone https://github.com/neovim/neovim.git "$NEOVIM_DIR"
+else
+	git pull
+fi
 #cloning latest neovim from official repo
-git clone https://github.com/neovim/neovim.git "$NEOVIM_DIR"
-
+# git pull
 #checks for file existance
 [ -e /usr/local/bin/nvim ] && sudo rm -f /usr/local/bin/nvim
 [ -e /usr/local/share/nvim/ ] && sudo rm -rf /usr/local/share/nvim/
@@ -48,5 +52,6 @@ git checkout nightly
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 
 sudo make install
+
 cd "$CURRENT_DIR" || terminate_script "Error: not able to change directory to \"$CURRENT_DIR\""
-rm -rf "$NEOVIM_DIR"
+# rm -rf "$NEOVIM_DIR"

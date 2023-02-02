@@ -6,11 +6,11 @@ if not oky then
   return
 end
 
-local lsp_opts = require("new.configs/lsp/utils")
+local lsp_opts = require("configs/lsp/utils")
 
 local servers = {
   "sumneko_lua",
-  "tailwindcss",
+  --  "tailwindcss",
   "html",
   "prismals",
   "rust_analyzer",
@@ -29,9 +29,9 @@ require("mason-lspconfig").setup({
   ensure_installed = servers,
   automatic_installation = true,
 })
-require("new.configs.lsp.nullls")
-require("new.configs.lsp.saga")
-require("new.configs.dap")
+-- require("configs.lsp.nullls")
+require("configs.lsp.saga")
+require("configs.dap")
 
 local opts = {}
 
@@ -43,24 +43,24 @@ for _, server in pairs(servers) do
 
   server = vim.split(server, "@")[1]
 
-  local require_ok, conf_opts = pcall(require, "new.configs.lsp.settings." .. server)
+  local require_ok, conf_opts = pcall(require, "configs.lsp.settings." .. server)
   if require_ok then
     opts = vim.tbl_deep_extend("force", conf_opts, opts)
   end
 
   if server == "rust_analyzer" then
-    require("new.configs.lsp.tools.rust").setup()
+    require("configs.lsp.tools.rust").setup()
     goto cont
   end
 
   if server == "gopls" then
-    require("new.configs.lsp.tools.go").setup()
+    require("configs.lsp.tools.go").setup()
     goto cont
   end
 
   if server == "tsserver" then
-    require("new.configs.lsp.tools.ts").setup()
-    require("new.configs.lsp.tools.npm").setup()
+    -- require("configs.lsp.tools.ts").setup()
+    require("configs.lsp.tools.npm").setup()
     goto cont
   end
 
@@ -68,7 +68,7 @@ for _, server in pairs(servers) do
   ::cont::
 end
 
-require("new.configs.lsp.tools.flutter").setup()
+require("configs.lsp.tools.flutter").setup()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,

@@ -12,7 +12,7 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 --
-local icons = require("new.utils.icons")
+local icons = require("utils.icons")
 --
 dashboard.section.header.val = {
   [[                               __                ]],

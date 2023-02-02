@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local icons = require("new.utils.icons")
+local icons = require("utils.icons")
 
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")

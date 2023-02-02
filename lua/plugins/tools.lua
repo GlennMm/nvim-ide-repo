@@ -6,8 +6,8 @@ return {
   "jose-elias-alvarez/typescript.nvim",
   "vuki656/package-info.nvim",
   {
-  "barrett-ruth/import-cost.nvim",
-  build = "sh install.sh yarn",
-  config = true,
-}
+    "barrett-ruth/import-cost.nvim",
+    build = "sh install.sh yarn",
+    config = false,
+  }
 }

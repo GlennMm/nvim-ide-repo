@@ -1,4 +1,4 @@
-local lsp_utils = require("new.configs.lsp.utils")
+local lsp_utils = require("configs.lsp.utils")
 local M = {}
 
 M.setup = function()

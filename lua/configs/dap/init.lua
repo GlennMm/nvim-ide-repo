@@ -8,7 +8,7 @@ local ok, dapui = pcall(require, "dapui")
 if not ok then
   return
 end
-require("new.configs.dap.ui")
+require("configs.dap.ui")
 
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -22,7 +22,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 -- INFO: adapter and configuration setup
-require("new.configs.dap.languages").setup(dap)
+require("configs.dap.languages").setup(dap)
 
 local sign_define = vim.fn.sign_define
 local dap_breakpoint = {

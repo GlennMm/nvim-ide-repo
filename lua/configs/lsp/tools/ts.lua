@@ -82,7 +82,7 @@ local tss = {
   --   },
   -- },
 }
-local lsp_opt = require("new.configs.lsp.utils")
+local lsp_opt = require("configs.lsp.utils")
 M.setup = function()
   tools.setup({
     disable_commands = false, -- prevent the plugin from creating Vim commands

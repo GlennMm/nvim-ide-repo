@@ -1,4 +1,5 @@
-require("new")
+require('core')
+require('configs')
 
 P = function(v)
   print(vim.inspect(v))

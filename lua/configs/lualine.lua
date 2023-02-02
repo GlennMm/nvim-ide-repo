@@ -3,7 +3,7 @@ if not oky then
   return
 end
 
-local icons = require("new.utils.icons")
+local icons = require("utils.icons")
 
 local function contains(t, value)
   for _, v in pairs(t) do
