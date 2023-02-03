@@ -1,4 +1,5 @@
-local theme = "onedark"
+-- local theme = "palenightfall"
+local theme = "melange"
 if theme == "onedark" then
   local onedark = require("onedark")
   onedark.setup({

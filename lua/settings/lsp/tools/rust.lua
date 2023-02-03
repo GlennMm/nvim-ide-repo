@@ -6,7 +6,7 @@ if not oky then
   return
 end
 
-local lsp_opt = require("configs.lsp.utils")
+local lsp_opt = require("settings.lsp.utils")
 
 M.setup = function()
   local opts = {

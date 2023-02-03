@@ -1,5 +1,5 @@
 require('core')
-require('configs')
+require('settings')
 
 P = function(v)
   print(vim.inspect(v))

@@ -1,0 +1,18 @@
+require("settings.lsp")
+require("settings.dap")
+require("settings.cmp")
+require("settings.treesitter")
+require("settings.autopairs")
+require("settings.term")
+require("settings.comment")
+require("settings.telescope")
+
+-- INFO: additions stuff
+require("settings.nvim-tree")
+require("settings.bufferline")
+require("settings.noice")
+require("settings.lualine")
+require("settings.colorscheme")
+require("settings.todo")
+require("settings.snippets")
+require("settings.dev")

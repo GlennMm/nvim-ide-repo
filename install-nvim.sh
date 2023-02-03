@@ -39,7 +39,8 @@ if [ ! -d "$NEOVIM_DIR" ];
 else
 	git pull
 fi
-#cloning latest neovim from official repo
+
+# cloning latest neovim from official repo
 # git pull
 #checks for file existance
 [ -e /usr/local/bin/nvim ] && sudo rm -f /usr/local/bin/nvim

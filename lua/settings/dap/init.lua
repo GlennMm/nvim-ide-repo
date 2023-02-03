@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local sign_define = vim.fn.sign_define
 local opt = { silent = true, noremap = true }
 local oky, dap = pcall(require, "dap")
 if not oky then
@@ -8,9 +9,11 @@ local ok, dapui = pcall(require, "dapui")
 if not ok then
   return
 end
-require("configs.dap.ui")
 
+require("settings.dap.ui")
+require("settings.dap.languages").setup_adapter_and_configs(dap)
 dapui.setup()
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -21,10 +24,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- INFO: adapter and configuration setup
-require("configs.dap.languages").setup(dap)
-
-local sign_define = vim.fn.sign_define
 local dap_breakpoint = {
   error = {
     text = "🟥",

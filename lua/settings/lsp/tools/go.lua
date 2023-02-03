@@ -7,7 +7,7 @@ if not oky then
 end
 
 local icons = require("utils.icons")
-local lsp_opt = require("configs.lsp.utils")
+local lsp_opt = require("settings.lsp.utils")
 
 M.setup = function()
   tools.setup({
